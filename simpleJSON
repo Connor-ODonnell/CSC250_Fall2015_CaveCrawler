@@ -3,5 +3,10 @@
   "one":"1",
   "two":"2",
   "three":    {"a":"apple","b":"banana"},
-  "four":2
+  "four":2,
+  "students":[
+    {"firstName":"Connor","lastName":"ODonnell"},
+    {"firstName":"John","lastName":"Wall"} 
+   
+]
 }
