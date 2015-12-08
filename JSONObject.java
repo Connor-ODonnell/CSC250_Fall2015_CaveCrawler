@@ -1,4 +1,6 @@
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 public class JSONObject 
 {
 	private JSONVariable[] theVariables;
@@ -10,6 +12,25 @@ public class JSONObject
 		this.currSize = 0;
 	}
 	
+	
+	public JSONVariable getVariableForName(String name)
+	{
+		for(int i = 0; i < this.currSize; i++)
+		{
+			if(this.theVariables[i].getName().equals(name))
+			{
+				return this.theVariables[i];
+			}
+		}
+		return null;
+	}
+
+
+	public int getCurrSize() {
+		return currSize;
+	}
+
+
 	public void addVariable(JSONVariable jv)
 	{
 		if(this.currSize < this.theVariables.length)
@@ -26,6 +47,21 @@ public class JSONObject
 		{
 			this.theVariables[i].display();
 		}
-		
+	}
+	
+	
+	public String exportToJSON()
+	{
+		String answer = "{";
+		for(int i = 0; i < this.currSize; i++)
+		{
+			answer += this.theVariables[i].exportToJSON();
+			if(i != this.currSize-1)
+			{
+				answer += ",";
+			}
+		}
+		answer += "}";
+		return answer;
 	}
 }
